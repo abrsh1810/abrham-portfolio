@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abrham Yohannes - Personal Site</title>
+  <style>
+    body {
+      margin: 0; padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #eee;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    body.light {
+      background-color: #f0f0f0;
+      color: #222;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    header {
+      text-align: center;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #333;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.3rem;
+      color: #00b7ff;
+      font-weight: bold;
+      margin: 0.5rem 0 0;
+    }
+
+    main {
+      padding: 2rem 0;
+    }
+
+    /* Sections & Cards */
+    section {
+      margin-bottom: 3rem;
+    }
+    .card {
+      background-color: #1e1e1e;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 183, 255, 0.7);
+      padding: 2rem;
+      color: #eee;
+      transition: box-shadow 0.3s ease;
+      margin-bottom: 1.5rem;
+    }
+    body.light .card {
+      background-color: #fff;
+      color: #222;
+      box-shadow: 0 0 20px rgba(0, 183, 255, 0.4);
+    }
+    .card:hover {
+      box-shadow: 0 0 40px #00b7ff;
+    }
+
+    .card img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #333;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 5px #00b7ff);
+      transition: transform 0.3s ease, filter 0.3s ease;
+      cursor: pointer;
+    }
+    .card img:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 15px #00eaff);
+    }
+
+    h2 {
+      font-size: 2rem;
+      border-bottom: 2px solid #00b7ff;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p, ul {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin: 0;
+      color: #aaa;
+    }
+    body.light p, body.light ul {
+      color: #555;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .social {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1rem 0;
+    }
+    .social a {
+      color: #00b7ff;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+    .social a:hover {
+      color: #00eaff;
+    }
+
+    .email-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #00b7ff;
+      animation: pulse 2s infinite;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .email-link:hover {
+      color: #00eaff;
+      text-decoration: underline;
+    }
+
+    /* Projects grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background-color: #272727;
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 0 10px rgba(0, 183, 255, 0.5);
+      transition: box-shadow 0.3s ease;
+    }
+    body.light .project-card {
+      background-color: #f7f7f7;
+      color: #222;
+      box-shadow: 0 0 10px rgba(0, 183, 255, 0.3);
+    }
+    .project-card:hover {
+      box-shadow: 0 0 20px #00b7ff;
+    }
+    .project-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    .project-card p {
+      margin-bottom: 1rem;
+    }
+    .project-card a {
+      color: #00b7ff;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .project-card a:hover {
+      text-decoration: underline;
+      color: #00eaff;
+    }
+
+    /* Contact form */
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    input, textarea {
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      resize: vertical;
+      transition: box-shadow 0.3s ease;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      box-shadow: 0 0 8px #00b7ff;
+      background-color: #222;
+      color: #eee;
+    }
+    body.light input:focus, body.light textarea:focus {
+      background-color: #fff;
+      color: #222;
+    }
+    button[type="submit"] {
+      background-color: #00b7ff;
+      border: none;
+      border-radius: 20px;
+      padding: 0.8rem 1.5rem;
+      font-weight: bold;
+      color: #121212;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      align-self: flex-start;
+    }
+    button[type="submit"]:hover {
+      background-color: #00eaff;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #333;
+      padding: 1rem 0 0;
+      margin-top: 2rem;
+    }
+    body.light footer {
+      color: #999;
+      border-top-color: #ccc;
+    }
+
+    /* Animations */
+    @keyframes pulse {
+      0%, 100% { text-shadow: 0 0 5px #00b7ff; }
+      50% { text-shadow: 0 0 20px #00eaff; }
+    }
+
+    #toggle-theme {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: #00b7ff;
+      border: none;
+      border-radius: 20px;
+      color: #121212;
+      padding: 10px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00b7ff;
+      transition: background 0.3s ease, color 0.3s ease;
+      user-select: none;
+      z-index: 999;
+    }
+    #toggle-theme:hover {
+      background: #00eaff;
+      color: #000;
+    }
+
+    /* Success message */
+    #success-message {
+      color: #00eaff;
+      font-weight: bold;
+      margin-top: 1rem;
+      display: none;
+      text-align: center;
+    }
+
+  </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <button id="toggle-theme">Light Mode</button>
+
+  <div class="container">
+    <header>
+      <h1>Abrham Yohannes</h1>
+      <p>🎮 Gamer | 👨‍💻 Web Developer | 🧠 Future Hacker | PUBG Player</p>
+    </header>
+
+    <main>
+      <!-- About -->
+      <section class="card" style="animation-delay: 0s;">
+        <img src="photo_2024-12-17_05-26-38.jpg" alt="Abrham Yohannes" />
+        <p>
+          Hi, I’m Abrham Yohannes from Ethiopia. I love gaming—especially PUBG and GTA.
+          When I’m not gaming, I’m coding websites and learning hacking skills to level up my future.
+        </p>
+        <a href="mailto:wildwonderab@gmail.com" class="email-link">💌 wildwonderab@gmail.com</a>
+      </section>
+
+      <!-- Skills -->
+      <section class="card" style="animation-delay: 0.3s;">
+        <h2>Skills & Interests</h2>
+        <ul>
+          <li>PUBG & GTA player 🎮</li>
+          <li>Web developer (HTML, CSS, JavaScript) 💻</li>
+          <li>Cybersecurity and hacking enthusiast 🛡️</li>
+          <li>Content creator & streamer 🎥</li>
+        </ul>
+      </section>
+
+      <!-- Projects -->
+      <section class="card" style="animation-delay: 0.6s;">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3>Personal Portfolio</h3>
+            <p>A clean and dark-mode friendly personal website showcasing my skills and interests.</p>
+            <a href="#" target="_blank" rel="noopener">View Project</a>
+          </div>
+          <div class="project-card">
+            <h3>Game Stats Tracker</h3>
+            <p>A web app to track PUBG stats and improve gameplay with data insights.</p>
+            <a href="#" target="_blank" rel="noopener">View Project</a>
+          </div>
+          <div class="project-card">
+            <h3>Security Blog</h3>
+            <p>Blog where I share tips and tutorials about ethical hacking and cybersecurity.</p>
+            <a href="#" target="_blank" rel="noopener">View Project</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="card" style="animation-delay: 0.9s;">
+        <h2>Contact Me</h2>
+        <form id="contact-form">
+          <input type="text" id="name" name="name" placeholder="Your Name" required />
+          <input type="email" id="email" name="email" placeholder="Your Email" required />
+          <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit">Send Message</button>
+          <p id="success-message">Thanks for reaching out! I’ll get back to you soon.</p>
+        </form>
+      </section>
+
+      <!-- Social Links -->
+      <section class="card" style="animation-delay: 1.2s;">
+        <h2>Find Me Online</h2>
+        <div class="social">
+          <a href="https://github.com/wildwonderab" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.youtube.com/@wildwonderab" target="_blank" rel="noopener" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="https://www.instagram.com/wildwonderab" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      &copy; 2025 Abrham Yohannes. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('toggle-theme');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      if (document.body.classList.contains('light')) {
+        toggleBtn.textContent = 'Dark Mode';
+      } else {
+        toggleBtn.textContent = 'Light Mode';
+      }
+    });
+
+    // Simple contact form handler (no real backend)
+    const form = document.getElementById('contact-form');
+    const successMessage = document.getElementById('success-message');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Here you could add real form submission logic
+      successMessage.style.display = 'block';
+      form.reset();
+      setTimeout(() => {
+        successMessage.style.display = 'none';
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
+
+
